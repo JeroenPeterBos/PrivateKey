@@ -22,23 +22,33 @@ public class Administrator {
 	 * @param superSecretKey the personal key for encryption
 	 */
 	public void addAccount(Service service, String username, String superSectretKey){
+		int passCipher = 0;
+		Account acc = new Account(service, username, passCipher);
 		
+		service.add(acc);
+		sql.add(acc);
 	}
 	
 	/**
 	 * Adds a new <code>Service</code> to the database.
 	 * @param service the service to add to the database.
 	 */
-	public void addService(Service service){
+	public void addService(Group group, String name){
+		Service ser = new Service(group, name, 0);
 		
+		group.add(ser);
+		sql.add(ser);
 	}
 	
 	/**
 	 * Adds a <code>Group</code> to the database
 	 * @param group the group to add to the database.
 	 */
-	public void addGroup(Group group){
+	public void addGroup(String name){
+		Group gro = new Group(name, 0);
 		
+		// TODO: add gro to group array
+		sql.add(gro);
 	}
 	
 	/**
@@ -72,7 +82,7 @@ public class Administrator {
 	 * Deletes a certain account from the database.
 	 * @param account the account to be deleted
 	 */
-	public void deleteAccount(Account account){
+	public void removeAccount(Account account){
 		
 	}
 	
@@ -80,7 +90,7 @@ public class Administrator {
 	 * Deletes a certain Service from the database.
 	 * @param service the service to be deleted
 	 */
-	public void deleteService(Service service){
+	public void removeService(Service service){
 		
 	}
 	
@@ -88,7 +98,7 @@ public class Administrator {
 	 * Deletes a certain Group from the database.
 	 * @param group the group to be deleted
 	 */
-	public void deleteGroup(Group group){
+	public void removeGroup(Group group){
 		
 	}
 	
@@ -99,7 +109,7 @@ public class Administrator {
 	 * @return list of groups
 	 */
 	public Group[] allGroups(){
-		return null;
+		return groups;
 	}
 	
 	/**
@@ -108,7 +118,7 @@ public class Administrator {
 	 * @return list of services
 	 */
 	public Service[] allServices(Group group){
-		return null;
+		return group.getServices();
 	}
 	
 	/**
@@ -117,6 +127,6 @@ public class Administrator {
 	 * @return list of accounts.
 	 */
 	public Account[] allAccounts(Service service){
-		return null;
+		return service.getAccounts();
 	}
 }

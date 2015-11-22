@@ -12,13 +12,14 @@ public class Service extends Element{
 	private Group group;
 	// ------------------------------- Constructors ------------------------------------ //
 	
-	public Service(String name, Group group, int numberOfAccounts){
+	public Service(Group group, String name, int numberOfAccounts){
 		super(name);
 		this.numberOfAccounts = numberOfAccounts;
 		this.group = group;
+		this.accounts = new Account[0];
 	}
 	
-	public Service(String name, Group group, Account[] accounts){
+	public Service(Group group, String name, Account[] accounts){
 		super(name);
 		this.accounts = accounts;
 		this.numberOfAccounts = accounts.length;
@@ -33,7 +34,24 @@ public class Service extends Element{
 	public void setAccounts(Account[] accounts){
 		this.accounts = accounts;
 	}
+	
+	public void add(Account account){
+		
+	}
+	
+	public void edit(Account oldAccount, Account newAccount){
+		
+	}
+	
+	public void remove(Account account){
+		
+	}
+	
 	// ------------------------------- Queries ----------------------------------------- //
+	
+	public Group getGroup(){
+		return group;
+	}
 	
 	public int getNoAccounts(){	return numberOfAccounts;	}
 	
