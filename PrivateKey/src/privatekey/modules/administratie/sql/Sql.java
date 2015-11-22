@@ -1,5 +1,5 @@
 package privatekey.modules.administratie.sql;
 
-public class SqlController {
+public class Sql {
 
 }
