@@ -7,20 +7,21 @@ public class Service extends Element{
 	
 	// ------------------------------- Instance Variables ------------------------------ //
 	
+	private Group group;
 	private Account[] accounts;
 	private int numberOfAccounts;
-	private Group group;
+	
 	// ------------------------------- Constructors ------------------------------------ //
 	
 	public Service(Group group, String name, int numberOfAccounts){
-		super(name);
+		super(name, -1);
 		this.numberOfAccounts = numberOfAccounts;
 		this.group = group;
 		this.accounts = new Account[0];
 	}
 	
-	public Service(Group group, String name, Account[] accounts){
-		super(name);
+	public Service(int service_id, Group group, String name, Account[] accounts){
+		super(name, service_id);
 		this.accounts = accounts;
 		this.numberOfAccounts = accounts.length;
 		this.group = group;

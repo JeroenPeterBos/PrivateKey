@@ -13,10 +13,17 @@ public class Account extends Element{
 	// ------------------------------- Constructors ------------------------------------ //
 	
 	public Account(Service service, String userName, int passCipher){
-		super(userName);
+		super(userName, -1);
 		this.service = service;
 		this.passCipher = passCipher;
 	}
+	
+	public Account(int account_id, Service service, String userName, int passCipher){
+		super(userName, account_id);
+		this.service = service;
+		this.passCipher = passCipher;
+	}
+	
 	// ------------------------------- Commands ---------------------------------------- //
 	
 	// ------------------------------- Queries ----------------------------------------- //

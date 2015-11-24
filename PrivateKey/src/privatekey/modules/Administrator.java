@@ -3,14 +3,14 @@ package privatekey.modules;
 import privatekey.modules.administratie.elements.Account;
 import privatekey.modules.administratie.elements.Group;
 import privatekey.modules.administratie.elements.Service;
-import privatekey.modules.administratie.sql.Sql;
+import privatekey.modules.administratie.save.Sql;
 
 public class Administrator {
 	// -------------------------------- Instance Variables -------------------------------- //
 	
 	private Sql sql = new Sql();
 	private Group[] groups;
-	
+
 	// -------------------------------- Constructors -------------------------------------- //
 	
 	// -------------------------------- Commands ------------------------------------------ //

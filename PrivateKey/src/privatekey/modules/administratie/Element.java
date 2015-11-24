@@ -10,6 +10,7 @@ public class Element {
 	// -------------------------------- Instance Variables -------------------------------- //
 	
 		private String name;
+		private int id;
 		
 		// -------------------------------- Constructors -------------------------------------- //
 		
@@ -17,10 +18,15 @@ public class Element {
 		 * Creates a new <code>Element</code> with the given name.
 		 * @param name the name of this <code>Element</code>
 		 */
-		public Element(String name){
+		public Element(String name, int id){
 			this.name = name;
+			this.id = id;
 		}
 		// -------------------------------- Commands ------------------------------------------ //
+		
+		public void setId(int id){
+			this.id = id;
+		}
 		
 		// -------------------------------- Queries ------------------------------------------- //
 		
@@ -30,5 +36,9 @@ public class Element {
 		 */
 		public String getName(){
 			return name;
+		}
+		
+		public int getId(){
+			return id;
 		}
 }

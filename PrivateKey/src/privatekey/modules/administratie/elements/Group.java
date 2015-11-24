@@ -22,7 +22,12 @@ public class Group extends Element{
 	 * @param numberOfServices the number of services it has
 	 */
 	public Group(String name, int numberOfServices){
-		super(name);
+		super(name, -1);
+		this.numberOfServices = numberOfServices;
+	}
+	
+	public Group(int group_id, String name, int numberOfServices){
+		super(name, group_id);
 		this.numberOfServices = numberOfServices;
 	}
 	
@@ -31,8 +36,8 @@ public class Group extends Element{
 	 * @param name the name of the group
 	 * @param services the list of services belonging to this group.
 	 */
-	public Group(String name, Service[] services){
-		super(name);
+	public Group(int group_id, String name, Service[] services){
+		super(name, group_id);
 		this.services = services;
 		this.numberOfServices = services.length;
 	}
@@ -77,7 +82,7 @@ public class Group extends Element{
 	 * Returns the number of services belonging to this group.
 	 * @return the number of services
 	 */
-	protected int getNoServices(){
+	public int getNoServices(){
 		return numberOfServices;
 	}
 	
