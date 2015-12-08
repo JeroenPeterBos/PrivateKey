@@ -32,10 +32,6 @@ public class Account extends Element{
 		return service;
 	}
 	
-	public String getUserName(){
-		return getName();
-	}
-	
 	public int getPassCipher(){
 		return passCipher;
 	}

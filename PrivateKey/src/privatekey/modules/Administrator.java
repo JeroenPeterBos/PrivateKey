@@ -3,6 +3,7 @@ package privatekey.modules;
 import java.util.ArrayList;
 
 import privatekey.modules.administratie.Element;
+
 import privatekey.modules.administratie.elements.Account;
 import privatekey.modules.administratie.elements.Group;
 import privatekey.modules.administratie.elements.Service;
@@ -124,6 +125,7 @@ public class Administrator {
 	 * Returns a list of all the groups in the database;
 	 * @return list of groups
 	 */
+
 	public ArrayList<Group> allGroups(){
 		return groups;
 	}
@@ -133,7 +135,10 @@ public class Administrator {
 	 * @param group group which in the services are
 	 * @return list of services
 	 */
-	public Service[] allServices(Group group){
+	public ArrayList<Service> getServices(Group group){
+		if(group.getServices() == null){
+			group.setServices(sql.getServices(group));
+		}
 		return group.getServices();
 	}
 	
@@ -142,7 +147,10 @@ public class Administrator {
 	 * @param service the service from which the accounts are requested.
 	 * @return list of accounts.
 	 */
-	public Account[] allAccounts(Service service){
+	public ArrayList<Account> getAccounts(Service service){
+		if(service.getAccounts() == null){
+			service.setAccounts(sql.getAccounts(service));
+		}
 		return service.getAccounts();
 	}
 	
@@ -153,4 +161,6 @@ public class Administrator {
 		}
 		return result;
 	}
+	
+	// ----------------------------------- Dev Methods -------------------------------------------- //
 }

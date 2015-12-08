@@ -1,5 +1,7 @@
 package privatekey.modules.administratie.elements;
 
+import java.util.ArrayList;
+
 import privatekey.modules.administratie.Element;
 
 public class Service extends Element{
@@ -8,7 +10,7 @@ public class Service extends Element{
 	// ------------------------------- Instance Variables ------------------------------ //
 	
 	private Group group;
-	private Account[] accounts;
+	private ArrayList<Account> accounts;
 	private int numberOfAccounts;
 	
 	// ------------------------------- Constructors ------------------------------------ //
@@ -17,13 +19,18 @@ public class Service extends Element{
 		super(name, -1);
 		this.numberOfAccounts = numberOfAccounts;
 		this.group = group;
-		this.accounts = new Account[0];
 	}
 	
-	public Service(int service_id, Group group, String name, Account[] accounts){
+	public Service(int service_id, Group group, String name, int numberOfAccounts){
+		super(name, service_id);
+		this.group = group;
+		this.numberOfAccounts = numberOfAccounts;
+	}
+	
+	public Service(int service_id, Group group, String name, ArrayList<Account> accounts){
 		super(name, service_id);
 		this.accounts = accounts;
-		this.numberOfAccounts = accounts.length;
+		this.numberOfAccounts = accounts.size();
 		this.group = group;
 	}
 	// ------------------------------- Commands ---------------------------------------- //
@@ -32,7 +39,7 @@ public class Service extends Element{
 	
 	public void decrementNoA(){	numberOfAccounts--;	}
 	
-	public void setAccounts(Account[] accounts){
+	public void setAccounts(ArrayList<Account> accounts){
 		this.accounts = accounts;
 	}
 	
@@ -56,7 +63,7 @@ public class Service extends Element{
 	
 	public int getNoAccounts(){	return numberOfAccounts;	}
 	
-	public Account[] getAccounts(){
+	public ArrayList<Account> getAccounts(){
 		return accounts;
 	}
 }
