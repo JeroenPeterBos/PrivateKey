@@ -1,0 +1,25 @@
+package privatekey.modules.gui;
+
+import java.awt.FlowLayout;
+
+import javax.swing.JFrame;
+
+public class GUI extends JFrame {
+
+	// ------------------------------- Enumerations ------------------------------------ //
+	
+	// ------------------------------- Instance Variables ------------------------------ //
+	
+	// ------------------------------- Constructors ------------------------------------ //
+	
+	public GUI(){
+		super("PrivateKey");
+		setLayout(new FlowLayout());
+		
+		
+	}
+	
+	// ------------------------------- Commands ---------------------------------------- //
+	
+	// ------------------------------- Queries ----------------------------------------- //
+}

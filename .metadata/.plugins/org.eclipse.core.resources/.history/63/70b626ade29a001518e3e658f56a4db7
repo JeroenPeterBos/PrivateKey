@@ -1,0 +1,154 @@
+package privatekey.modules;
+
+import privatekey.modules.administratie.Element;
+import privatekey.modules.administratie.elements.Account;
+import privatekey.modules.administratie.elements.Group;
+import privatekey.modules.administratie.elements.Service;
+import privatekey.modules.administratie.sql.Sql;
+
+public class Administrator {
+	// -------------------------------- Instance Variables -------------------------------- //
+	
+	private static Administrator ADMIN;
+	
+	private Sql sql = new Sql();
+	private Group[] groups;
+
+	// -------------------------------- Constructors -------------------------------------- //
+	
+	private Administrator(){
+		
+	}
+	
+	public static Administrator get(){
+		if(ADMIN == null){
+			ADMIN = new Administrator();
+		}
+		return ADMIN;
+	}
+	
+	// -------------------------------- Commands ------------------------------------------ //
+	
+	/**
+	 * Adds a new user <code>Account</code> to the database and adds a newly generated encrypted password.
+	 * @param service name of the new service 
+	 * @param username the username you will have for this <code>Service</code>
+	 * @param superSecretKey the personal key for encryption
+	 */
+	public void addAccount(Service service, String username, String superSectretKey){
+		int passCipher = 0;
+		Account acc = new Account(service, username, passCipher);
+		
+		service.add(acc);
+		sql.add(acc);
+	}
+	
+	/**
+	 * Adds a new <code>Service</code> to the database.
+	 * @param service the service to add to the database.
+	 */
+	public void addService(Group group, String name){
+		Service ser = new Service(group, name, 0);
+		
+		group.add(ser);
+		sql.add(ser);
+	}
+	
+	/**
+	 * Adds a <code>Group</code> to the database
+	 * @param group the group to add to the database.
+	 */
+	public void addGroup(String name){
+		Group gro = new Group(name, 0);
+		
+		// TODO: add gro to group array
+		sql.add(gro);
+	}
+	
+	/**
+	 * Edits the account in the database.
+	 * @param oldAccount the account that is being modified
+	 * @param newAccount the new status of the account
+	 */
+	public void editAccount(Account oldAccount, Account newAccount){
+		
+	}
+	
+	/**
+	 * Edits the Service in the database.
+	 * @param oldService the Service that is being modified
+	 * @param newService the new status of the Service
+	 */
+	public void editService(Service oldService, Service newService){
+		
+	}
+	
+	/**
+	 * Edits the Group in the database.
+	 * @param oldGroup the Group that is being modified
+	 * @param newGroup the new status of the Group
+	 */
+	public void editGroup(Group oldGroup, Group newGroup){
+		
+	}
+	
+	/**
+	 * Deletes a certain account from the database.
+	 * @param account the account to be deleted
+	 */
+	public void removeAccount(Account account){
+		
+	}
+	
+	/**
+	 * Deletes a certain Service from the database.
+	 * @param service the service to be deleted
+	 */
+	public void removeService(Service service){
+		
+	}
+	
+	/**
+	 * Deletes a certain Group from the database.
+	 * @param group the group to be deleted
+	 */
+	public void removeGroup(Group group){
+		
+	}
+	
+	// -------------------------------- Queries ------------------------------------------- //
+
+	/**
+	 * Returns a list of all the groups in the database;
+	 * @return list of groups
+	 */
+	public Group[] allGroups(){
+		return groups;
+	}
+	
+	/**
+	 * Returns a list of all services in a certain category which an account is registered.
+	 * @param group group which in the services are
+	 * @return list of services
+	 */
+	public Service[] allServices(Group group){
+		return group.getServices();
+	}
+	
+	/**
+	 * Returns all accounts registered at this service.
+	 * @param service the service from which the accounts are requested.
+	 * @return list of accounts.
+	 */
+	public Account[] allAccounts(Service service){
+		return service.getAccounts();
+	}
+	
+	public String[] getNames(Element[] e){
+		String[] result = new String[e.length];
+		for(int i = 0; i < e.length; i++){
+			result[i] = e[i].getName();
+		}
+		return result;
+	}
+}

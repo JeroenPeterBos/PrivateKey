@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;privatekey.modules.gui.GUI.getGUI()&apos; to &apos;get&apos;&#x0D;&#x0A;- Original project: &apos;PrivateKey&apos;&#x0D;&#x0A;- Original element: &apos;privatekey.modules.gui.GUI.getGUI()&apos;&#x0D;&#x0A;- Renamed element: &apos;privatekey.modules.gui.GUI.get()&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;getGUI&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;privatekey.modules.gui{GUI.java[GUI~getGUI" name="get" references="true" stamp="1449272225029" version="1.0"/>
+</session>

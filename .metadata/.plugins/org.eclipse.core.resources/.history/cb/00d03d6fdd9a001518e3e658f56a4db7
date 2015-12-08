@@ -1,0 +1,39 @@
+package privatekey.modules.gui;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+
+public class GroupView implements View {
+
+	// ------------------------------- Enumerations ------------------------------------ //
+	
+	// ------------------------------- Instance Variables ------------------------------ //
+	
+	private GUI gui;
+	
+	private JLabel text;
+	private JComboBox groups;
+	private JButton button;
+	
+	// ------------------------------- Constructors ------------------------------------ //
+	
+	public GroupView(GUI gui){
+		this.gui = gui;
+		
+		text = new JLabel("Select a category");
+	}
+	
+	// ------------------------------- Commands ---------------------------------------- //
+	
+	public void set(){
+		gui.add(text);
+	}
+	
+	
+	public void close(){
+		
+	}
+	// ------------------------------- Queries ----------------------------------------- //
+	
+}

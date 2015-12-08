@@ -1,0 +1,28 @@
+package privatekey.modules.gui;
+
+public class GroupView implements View {
+
+	// ------------------------------- Enumerations ------------------------------------ //
+	
+	// ------------------------------- Instance Variables ------------------------------ //
+	
+	private GUI gui;
+	
+	// ------------------------------- Constructors ------------------------------------ //
+	
+	public GroupView(GUI gui){
+		this.gui = gui;
+	}
+	
+	// ------------------------------- Commands ---------------------------------------- //
+	
+	public void set(){
+		
+	}
+	
+	
+	public void close(){
+		
+	}
+	// ------------------------------- Queries ----------------------------------------- //
+}

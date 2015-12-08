@@ -1,0 +1,24 @@
+package privatekey.modules;
+
+import javax.swing.JFrame;
+
+import privatekey.modules.gui.GUI;
+
+public class Main {
+	
+	private Administrator admin;
+	
+	public Main(){
+		this.admin = new Administrator();
+		this.
+	}
+	public static void main(String[] args){
+		Main main = new Main();
+		
+		GUI gui = new GUI(main);
+		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		gui.setSize(500, 200);
+		gui.setVisible(true);
+	}
+}
