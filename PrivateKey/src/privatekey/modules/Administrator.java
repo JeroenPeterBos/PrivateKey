@@ -1,18 +1,24 @@
 package privatekey.modules;
 
+import java.util.ArrayList;
+
 import privatekey.modules.administratie.elements.Account;
 import privatekey.modules.administratie.elements.Group;
 import privatekey.modules.administratie.elements.Service;
-import privatekey.modules.administratie.save.Sql;
+import privatekey.modules.administratie.sql.Sql;
 
 public class Administrator {
 	// -------------------------------- Instance Variables -------------------------------- //
 	
-	private Sql sql = new Sql();
-	private Group[] groups;
+	private Sql sql;
+	private ArrayList<Group> groups;
 
 	// -------------------------------- Constructors -------------------------------------- //
 	
+	public Administrator(){
+		this.sql = new Sql();
+		this.groups = sql.getGroups();
+	}
 	// -------------------------------- Commands ------------------------------------------ //
 	
 	/**
@@ -108,7 +114,7 @@ public class Administrator {
 	 * Returns a list of all the groups in the database;
 	 * @return list of groups
 	 */
-	public Group[] allGroups(){
+	public ArrayList<Group> getGroups(){
 		return groups;
 	}
 	
@@ -117,7 +123,10 @@ public class Administrator {
 	 * @param group group which in the services are
 	 * @return list of services
 	 */
-	public Service[] allServices(Group group){
+	public ArrayList<Service> getServices(Group group){
+		if(group.getServices() == null){
+			group.setServices(sql.getServices(group));
+		}
 		return group.getServices();
 	}
 	
@@ -126,7 +135,31 @@ public class Administrator {
 	 * @param service the service from which the accounts are requested.
 	 * @return list of accounts.
 	 */
-	public Account[] allAccounts(Service service){
+	public ArrayList<Account> getAccounts(Service service){
+		if(service.getAccounts() == null){
+			service.setAccounts(sql.getAccounts(service));
+		}
 		return service.getAccounts();
+	}
+	
+	// ----------------------------------- Dev Methods -------------------------------------------- //
+	
+	public static void main(String[] args){
+		Administrator admin = new Administrator();
+		
+		ArrayList<Group> groups = admin.getGroups();
+		for(Group g: groups){
+			System.out.println("Group: " + g.getName() + " , " + g.getId() + " , " + g.getNoServices());
+		}
+		
+		ArrayList<Service> services = admin.getServices(groups.get(0));
+		for(Service s: services){
+			System.out.println("Service: " + s.getGroup().getId() + " , " + s.getName() + " , " + s.getId() + " , " + s.getNoAccounts());
+		}
+		
+		ArrayList<Account> accounts = admin.getAccounts(services.get(0));
+		for(Account a: accounts){
+			System.out.println("Account: " + a.getService().getGroup() + " , " + a.getName() + " , " + a.getId() + " , " + a.getPassCipher());
+		}
 	}
 }

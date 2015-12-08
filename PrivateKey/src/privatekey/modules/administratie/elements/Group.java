@@ -1,5 +1,7 @@
 package privatekey.modules.administratie.elements;
 
+import java.util.ArrayList;
+
 import privatekey.modules.administratie.Element;
 
 /**
@@ -12,7 +14,7 @@ public class Group extends Element{
 	// -------------------------------- Instance Variables -------------------------------- //
 	
 	private int numberOfServices;
-	private Service[] services;
+	private ArrayList<Service> services;
 	
 	// -------------------------------- Constructors -------------------------------------- //
 	
@@ -36,10 +38,10 @@ public class Group extends Element{
 	 * @param name the name of the group
 	 * @param services the list of services belonging to this group.
 	 */
-	public Group(int group_id, String name, Service[] services){
+	public Group(int group_id, String name, ArrayList<Service> services){
 		super(name, group_id);
 		this.services = services;
-		this.numberOfServices = services.length;
+		this.numberOfServices = services.size();
 	}
 	// -------------------------------- Commands ------------------------------------------ //
 	/**
@@ -60,7 +62,7 @@ public class Group extends Element{
 	 * Sets the list of services to the provided list.
 	 * @param services list of services
 	 */
-	public void setServices(Service[] services){
+	public void setServices(ArrayList<Service> services){
 		this.services = services;
 	}
 	
@@ -90,7 +92,7 @@ public class Group extends Element{
 	 * Returns the list containing the services
 	 * @return list of services
 	 */
-	public Service[] getServices(){
+	public ArrayList<Service> getServices(){
 		return services;
 	}
 }
