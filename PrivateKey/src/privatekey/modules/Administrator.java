@@ -1,17 +1,33 @@
 package privatekey.modules;
 
+import java.util.ArrayList;
+
+import privatekey.modules.administratie.Element;
 import privatekey.modules.administratie.elements.Account;
 import privatekey.modules.administratie.elements.Group;
 import privatekey.modules.administratie.elements.Service;
-import privatekey.modules.administratie.save.Sql;
+import privatekey.modules.administratie.sql.Sql;
 
 public class Administrator {
 	// -------------------------------- Instance Variables -------------------------------- //
 	
+	private static Administrator ADMIN;
+	
 	private Sql sql = new Sql();
-	private Group[] groups;
+	private ArrayList<Group> groups;
 
 	// -------------------------------- Constructors -------------------------------------- //
+	
+	private Administrator(){
+		
+	}
+	
+	public static Administrator get(){
+		if(ADMIN == null){
+			ADMIN = new Administrator();
+		}
+		return ADMIN;
+	}
 	
 	// -------------------------------- Commands ------------------------------------------ //
 	
@@ -108,7 +124,7 @@ public class Administrator {
 	 * Returns a list of all the groups in the database;
 	 * @return list of groups
 	 */
-	public Group[] allGroups(){
+	public ArrayList<Group> allGroups(){
 		return groups;
 	}
 	
@@ -128,5 +144,13 @@ public class Administrator {
 	 */
 	public Account[] allAccounts(Service service){
 		return service.getAccounts();
+	}
+	
+	public String[] getNames(ArrayList<Group> e){
+		String[] result = new String[e.size()];
+		for(int i = 0; i < e.size(); i++){
+			result[i] = e.get(i).getName();
+		}
+		return result;
 	}
 }
